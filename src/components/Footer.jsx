@@ -1,12 +1,19 @@
 import { useState } from "react";
 
-function Footer({ onSend }) {
+function Footer({ onSend, isTyping }) {
   const [input, setInput] = useState("");
 
   const handleSend = () => {
-    if (!input.trim()) return;
+    if (!input.trim() || isTyping) return;
     onSend(input);
     setInput("");
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    }
   };
 
   return (
@@ -16,12 +23,20 @@ function Footer({ onSend }) {
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleKeyPress}
           placeholder="Type your message..."
-          className="w-full p-2 pr-10 border rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+          disabled={isTyping}
+          className="w-full p-2 pr-10 border rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed"
         />
         <button
           onClick={handleSend}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400"
+          disabled={isTyping || !input.trim()}
+          className={`absolute right-2 top-1/2 transform -translate-y-1/2 
+            ${
+              isTyping || !input.trim()
+                ? "text-gray-400 cursor-not-allowed"
+                : "text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400"
+            }`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

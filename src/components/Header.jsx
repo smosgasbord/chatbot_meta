@@ -33,10 +33,12 @@ function Header({ isSidebarOpen, setIsSidebarOpen }) {
             )}
           </svg>
         </button>
-        <h1 className="text-center text-xl font-bold dark:text-white">
-          AI Assistant
-        </h1>
-        <button onClick={() => setIsDark(!isDark)} className="p-2">
+        <div className="flex-1" />
+        <button
+          onClick={() => setIsDark(!isDark)}
+          className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+          title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+        >
           {isDark ? (
             <svg
               className="w-6 h-6 text-yellow-500"

@@ -26,9 +26,12 @@ function Chat({ messages, isTyping }) {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-8rem)] bg-white dark:bg-gray-700 rounded-lg shadow overflow-x-hidden">
+    <div className="h-full flex flex-col bg-white dark:bg-gray-700 rounded-lg shadow">
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div
+        className="flex-1 overflow-y-auto p-4 space-y-4 isolate"
+        onWheel={(e) => e.stopPropagation()}
+      >
         {messages.map((msg, index) => (
           <div
             key={index}

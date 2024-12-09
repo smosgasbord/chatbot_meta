@@ -1,13 +1,28 @@
-function Footer() {
+import { useState } from "react";
+
+function Footer({ onSend }) {
+  const [input, setInput] = useState("");
+
+  const handleSend = () => {
+    if (!input.trim()) return;
+    onSend(input);
+    setInput("");
+  };
+
   return (
-    <footer className="bg-white dark:bg-gray-900 shadow p-4">
+    <footer className="sticky bottom-0 bg-white dark:bg-gray-900 shadow p-4">
       <div className="relative">
         <input
           type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
           placeholder="Type your message..."
           className="w-full p-2 pr-10 border rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white"
         />
-        <button className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400">
+        <button
+          onClick={handleSend}
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="w-6 h-6"

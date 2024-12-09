@@ -4,7 +4,7 @@ function Header({ isSidebarOpen, setIsSidebarOpen }) {
   const { isDark, setIsDark } = useTheme();
 
   return (
-    <header className="sticky top-0 bg-white dark:bg-gray-900 shadow p-4">
+    <header className="sticky top-0 bg-white dark:bg-gray-900 shadow p-4 z-20">
       <div className="flex items-center justify-between">
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -34,7 +34,7 @@ function Header({ isSidebarOpen, setIsSidebarOpen }) {
           </svg>
         </button>
         <h1 className="text-center text-xl font-bold dark:text-white">
-          ChatBot App
+          AI Assistant
         </h1>
         <button onClick={() => setIsDark(!isDark)} className="p-2">
           {isDark ? (

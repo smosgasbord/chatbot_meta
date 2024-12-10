@@ -87,9 +87,9 @@ function Chat({ messages, isTyping }) {
           <div className="flex justify-start">
             <div className="bg-gray-200 dark:bg-gray-600 dark:text-white mr-4 p-3 rounded-lg">
               <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
-                <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-75"></div>
-                <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-150"></div>
+                <div className="w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full animate-bounce [animation-delay:0.15s]"></div>
+                <div className="w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full animate-bounce [animation-delay:0.3s]"></div>
               </div>
             </div>
           </div>

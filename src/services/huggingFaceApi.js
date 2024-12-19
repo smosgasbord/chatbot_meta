@@ -23,7 +23,7 @@ export async function getChatbotResponse(input, messageHistory = []) {
     const fullPrompt = `${SYSTEM_PROMPT}${conversationHistory}\nHuman: ${input}\nAssistant:`;
 
     const response = await hf.textGeneration({
-      model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
+      model: "Qwen/Qwen2.5-Coder-32B-Instruct",
       inputs: fullPrompt,
       parameters: {
         max_new_tokens: 2048,
